@@ -1,20 +1,22 @@
+import AntDesign from "@expo/vector-icons/AntDesign";
 import Entypo from "@expo/vector-icons/Entypo";
 import Feather from "@expo/vector-icons/Feather";
+import Ionicons from "@expo/vector-icons/Ionicons";
 import { Tabs } from "expo-router";
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, TouchableOpacity, View } from "react-native";
 
 export default function RootLayout() {
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: "#171212",
+        tabBarActiveTintColor: "#42B1EF",
         // headerStyle: {
         //   backgroundColor: "#25292e",
         // },
 
-        // tabBarStyle: {
-        //   backgroundColor: "#25292e",
-        // },
+        tabBarStyle: {
+          paddingTop: 20,
+        },
       }}
     >
       <Tabs.Screen
@@ -39,6 +41,27 @@ export default function RootLayout() {
         name="home"
         options={{
           title: "",
+          headerShadowVisible: false,
+          headerRight: () => (
+            <TouchableOpacity onPress={() => console.log("bell pressed")}>
+              <AntDesign
+                name="menu"
+                size={24}
+                color="black"
+                style={{ marginRight: 20 }}
+              />
+            </TouchableOpacity>
+          ),
+          headerLeft: () => (
+            <TouchableOpacity onPress={() => console.log("bell pressed")}>
+              <Ionicons
+                name="chevron-back-outline"
+                size={24}
+                color="black"
+                style={{ marginLeft: 20 }}
+              />
+            </TouchableOpacity>
+          ),
           tabBarIcon: ({ size }) => (
             <View style={styles.homeButton}>
               <Feather
@@ -80,7 +103,7 @@ const styles = StyleSheet.create({
     // padding: 20,
     width: 56, // replaces padding
     height: 56,
-    marginTop: -28,
+    marginTop: -70,
     //   shadowColor: "#0ea5e9",
     //   shadowOpacity: 0.45,
     //   shadowRadius: 10,
